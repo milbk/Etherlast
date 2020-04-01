@@ -23,10 +23,10 @@ namespace Etherlast
                     nowBlockNumber = w3.Eth.Blocks.GetBlockNumber.SendRequestAsync().Result.Value - 1;
                 for (var i = nowBlockNumber - 1; i <= lastBlockNumber; i++)
                 {
-                    var blockWithTransactions = w3.Eth.Blocks.GetBlockWithTransactionsByNumber
-                        .SendRequestAsync(i.ToHexBigInteger()).Result;
                     try
                     {
+                        var blockWithTransactions = w3.Eth.Blocks.GetBlockWithTransactionsByNumber
+                            .SendRequestAsync(i.ToHexBigInteger()).Result;
                         nowBlockNumber = blockWithTransactions.Number.Value;
                         //Task.Run(()=> { })
                         //Parallel.ForEach(blockWithTransactions.Transactions, itemTransaction => {})
